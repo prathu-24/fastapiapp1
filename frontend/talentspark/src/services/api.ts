@@ -3,7 +3,7 @@ import axios from "axios";
 const API_BASE_URL =
   window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
     ? "http://localhost:8000"
-    : "https://fastapiapp-1-7t6e.onrender.com";
+    : "https://fastapiapp1-dcm0.onrender.com";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
