@@ -1,6 +1,10 @@
 import os
 from dotenv import load_dotenv
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
+from sqlalchemy.ext.asyncio import (
+    create_async_engine,
+    async_sessionmaker,
+    AsyncSession,
+)
 from sqlalchemy.orm import declarative_base
 
 load_dotenv()
@@ -23,13 +27,9 @@ elif DATABASE_URL.startswith("postgresql://"):
         1,
     )
 
-# Remove sslmode from URL
-DATABASE_URL = DATABASE_URL.replace("?sslmode=require", "")
-
 engine = create_async_engine(
     DATABASE_URL,
-    echo=False,
-    connect_args={"ssl": True},
+    echo=True,
 )
 
 SessionLocal = async_sessionmaker(
