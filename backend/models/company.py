@@ -1,0 +1,17 @@
+from sqlalchemy import Column, Integer, String ,Enum ,ForeignKey
+from database import Base
+from sqlalchemy.orm import relationship
+
+
+
+class Company(Base):
+    __tablename__ = "companies"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False, index=True)
+    email = Column(String, unique=True)
+    phone = Column(String, index=True)
+    location = Column(String, index=True)
+    jobs = relationship("Job", back_populates="company", cascade="all, delete-orphan")
+
+
